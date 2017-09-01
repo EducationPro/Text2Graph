@@ -1,7 +1,5 @@
 echo "# Text2Graph" > README.md
-git init
 git add -A
-git commit -m "first commit"
-git remote add origin https://github.com/EducationPro/Text2Graph.git
-git push -u origin master
+git commit
+git push
 
