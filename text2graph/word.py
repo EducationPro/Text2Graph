@@ -19,7 +19,7 @@ class TagWord:
 		return tag in ['JJ', 'JJR', 'JJS']
 
 	def get_tag(word):
-		tag = 
+		tag = '' 
 		if is_adjective(tag):
 			return 'ADJ'
 		elif is_noun(tag):
