@@ -1,3 +1,3 @@
-from wordnet import WordNet
-from word import TagWord
-from graph import Graph
+from .wordnet_ import WordNet
+
+#WordNet.environment()

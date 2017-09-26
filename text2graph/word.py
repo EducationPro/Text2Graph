@@ -1,10 +1,11 @@
 from nltk.stem.wordnet import WordNetLemmatizer as lemmatize
 from nltk.corpus import wordnet as wn
 
-class TagWord:
+class Word:
 
-	def __init__(self):
-		pass	
+	def __init__(self, Word, Type):
+		self.word = Word
+		self.type = Type
 
 	def is_noun(tag):
 		return tag in ['NN', 'NNS', 'NNP', 'NNPS']

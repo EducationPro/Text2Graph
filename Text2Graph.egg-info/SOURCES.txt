@@ -1,0 +1,13 @@
+README.md
+setup.py
+Text2Graph.egg-info/PKG-INFO
+Text2Graph.egg-info/SOURCES.txt
+Text2Graph.egg-info/dependency_links.txt
+Text2Graph.egg-info/not-zip-safe
+Text2Graph.egg-info/top_level.txt
+text2graph/__init__.py
+text2graph/graph.py
+text2graph/node.py
+text2graph/word.py
+text2graph/wordnet.py
+text2graph/wordnet_.py
