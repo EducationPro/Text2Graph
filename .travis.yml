@@ -6,6 +6,4 @@ install:
   - pip install -U nltk
 # command to run tests
 script:
-  - cd text2graph
-  - ./test # or py.test for Python versions 3.5 and below
-  - cd ../
+  - cd text2graph && ./test && cd ../ # or py.test for Python versions 3.5 and below
