@@ -1,3 +1,1 @@
-from .wordnet_ import WordNet
-
-#WordNet.environment()
+from .wordnet import WordNet
