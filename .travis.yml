@@ -16,4 +16,4 @@ install:
   - export STANFORD_MODELS=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/models:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/classifiers
 # command to run tests
 script:
-  - cd text2graph &&  && python -m unittest -v tests/wordnet.py && cd ../ 
+  - cd text2graph && python -m unittest -v tests/wordnet.py && cd ../ 
