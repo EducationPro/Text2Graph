@@ -3,7 +3,17 @@ python:
   - "3.6"
 # command to install dependencies
 install:
+  - echo $PWD
   - pip install -U nltk
+  - wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip
+  - wget http://nlp.stanford.edu/software/stanford-postagger-full-2015-04-20.zip
+  - wget http://nlp.stanford.edu/software/stanford-parser-full-2015-04-20.zip
+  - unzip stanford-ner-2015-04-20.zip
+  - unzip stanford-parser-full-2015-04-20.zip
+  - unzip stanford-postagger-full-2015-04-20.zip
+  - export STANFORDTOOLSDIR=$PWD
+  - export CLASSPATH=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/stanford-postagger.jar:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/stanford-ner.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser-3.5.2-models.jar
+  - export STANFORD_MODELS=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/models:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/classifiers
 # command to run tests
 script:
-  - echo $PWD && wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip && wget http://nlp.stanford.edu/software/stanford-postagger-full-2015-04-20.zip && wget http://nlp.stanford.edu/software/stanford-parser-full-2015-04-20.zip && unzip stanford-ner-2015-04-20.zip && unzip stanford-parser-full-2015-04-20.zip && unzip stanford-postagger-full-2015-04-20.zip && cd text2graph && export STANFORDTOOLSDIR=/home/travis/build/EducationPro/Text2Graph/ && export CLASSPATH=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/stanford-postagger.jar:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/stanford-ner.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser-3.5.2-models.jar && export STANFORD_MODELS=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/models:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/classifiers && python -m unittest -v tests/wordnet.py && cd ../ # or py.test for Python versions 3.5 and below
+  - cd text2graph &&  && python -m unittest -v tests/wordnet.py && cd ../ 

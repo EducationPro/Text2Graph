@@ -5,6 +5,7 @@ import wordnet as wn
 class WordNet_Should(unittest.TestCase):
 	def setUp(self):
 		#wn.WordNet.environment ()
+		pass
 
 	def test_WordNet_Should_GenerateGraph_WhenInputIsASimpleSenetence(self):
 		node = wn.WordNet.Analyze.Tree(wn.WordNet.Parse.SentenceTree('The red fox is fox.'))
