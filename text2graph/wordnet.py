@@ -157,7 +157,7 @@ class WordNet:
 		@staticmethod
 		def VP (tree):
 			#print ("VP:" + str(tree))
-			action, node = "", Node ()
+			action, node = "", MultiNode ([])
 			
 			for part in list(tree):
 				if part.label () == 'VP':
@@ -168,18 +168,21 @@ class WordNet:
 					if 'VP' in children:	
 						action = action + list(children.keys ())[0]
 					else:
-						(suffix, node) = WordNet.Analyze.VP (part)
-						action += suffix
+						node.nodes.addNode (Node ())
+						(suffix, node.nodes[-1]) = WordNet.Analyze.VP (part)
+						action += ' ' + suffix
 				elif part.label () == 'NP':
-					node = WordNet.Analyze.NP (part, node)
+					node.addNode (WordNet.Analyze.NP (part, node.nodes[-1]))
 				elif part.label () == 'PP':
-					node = WordNet.Analyze.PP (part, node)
+					node.addNode (WordNet.Analyze.PP (part, node.nodes[-1]))
 				elif part.label ()[0] == 'V':
 					action = action + ''.join(part.leaves ())
 				elif part.label () == '.' or part.label () == ',':
 					continue
+				elif part.label () == 'SBAR': # when/while
+					continue
 				else:
-					node.extendProperty (''.join(part.leaves ()))
+					node.nodes[-1].extendProperty (''.join(part.leaves ()))
 					
 
 

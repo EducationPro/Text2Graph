@@ -14,7 +14,7 @@ def responseMap():
 	print (sentences [0])
 	Map = wn.Analyze.Tree (wn.Parse.SentenceTree (sentences [0]))
 	for x in sentences [1:]:
-		Map = wn.Analyze.CombineTrees (Map, x)
+		Map = wn.Analyze.CombineTrees (Map, wn.Analyze.Tree (wn.Parse.SentenceTree (x)))
 
 	return jsonify(Map.getAsObject ())
 
