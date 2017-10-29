@@ -14,6 +14,9 @@ install:
   - export STANFORDTOOLSDIR=$PWD
   - export CLASSPATH=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/stanford-postagger.jar:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/stanford-ner.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser.jar:$STANFORDTOOLSDIR/stanford-parser-full-2015-04-20/stanford-parser-3.5.2-models.jar
   - export STANFORD_MODELS=$STANFORDTOOLSDIR/stanford-postagger-full-2015-04-20/models:$STANFORDTOOLSDIR/stanford-ner-2015-04-20/classifiers
+  - python -m pip install nltk
+  - python -m nltk.downloader 'averaged_perceptron_tagger'
+  - python -m pip install pywsd
 # command to run tests
 script:
   - cd text2graph && python -m unittest -v tests/wordnet.py && cd ../ 
