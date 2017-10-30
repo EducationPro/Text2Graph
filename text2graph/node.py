@@ -1,3 +1,5 @@
+from lemmatizer import lemmatizer
+
 class Node:
 	def __init__ (self):
 		self.properties = []
@@ -5,9 +7,9 @@ class Node:
 	def extendAction (self, act, Object):
 		if Object is list:
 			for x in Object:
-				self.actions.append({'action': act, 'obj': x})
+				self.actions.append({'action': lemmatizer.to_verb(act), 'obj': x})
 		else:
-			self.actions.append({'action': act, 'obj': Object})
+			self.actions.append({'action': lemmatizer.to_verb(act), 'obj': Object})
 	def extendProperty (self, Object):
 		if Object is list:
 			for x in Object:
@@ -59,6 +61,18 @@ class Node:
 	def get (self):
 		return [self]
 	
+	def all_nodes (self):
+		ans = [self]
+		for x in self.actions:
+			ans.extend (x['obj'].all_nodes ())
+		return ans
+	
+	def all_properties (self):
+		return self.properties
+	
+	def all_actions (self):
+		return self.actions
+
 	def getAsObject(self):
 		return {
 				'properties': [x for x in self.properties],

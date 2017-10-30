@@ -21,6 +21,24 @@ class MultiNode:
 
 	def get (self):
 		return self.nodes
+	
+	def all_nodes (self):
+		ans = []
+		for x in self.nodes:
+			ans.extend (x.all_nodes ())
+		return ans
+	
+	def all_properties (self):
+		ans = []
+		for x in self.nodes:
+			ans.extend (x.all_properties ())
+		return ans
+	
+	def all_actions (self):
+		ans = []
+		for x in self.nodes:
+			ans.extend (x.all_actions ())
+		return ans
 
 	def getAsObject (self):
 		return [x.getAsObject () for x in self.nodes]
