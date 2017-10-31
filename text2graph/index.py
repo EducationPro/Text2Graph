@@ -1,9 +1,9 @@
-from flask import Flask, send_from_directory
+from flask import Flask, render_template
 from flask import request, jsonify, abort
 from wordnet import WordNet as wn
 from questions import WordNet as wnq
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, template_folder='.')
 wn.environment ()
 
 @app.route('/api/v1.0/text/map/')
@@ -43,15 +43,15 @@ def responseAnswer():
 
 @app.route('/jquery-3.2.1.min.js')
 def sendAJAX():
-    return app.send_static_file('jquery-3.2.1.min.js')
+    return render_template('jquery-3.2.1.min.js')
 
 @app.route('/find.html')
 def sendFind():
-    return app.send_static_file('find.html')
+    return render_template('find.html')
 
 @app.route('/graph.html')
 def sendGraph():
-    return app.send_static_file('graph.html')
+    return render_template('graph.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='192.168.0.104', port=8001)

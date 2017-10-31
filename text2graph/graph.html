@@ -94,7 +94,7 @@
 						var request = $.ajax({
 							async: false,
 							method: 'GET',
-							url: "http://arteach.tk/api/v1.0/text/map/", 
+							url: "/api/v1.0/text/map/", 
 							data: { text: 'Alex is clever.' }
 						});
 
@@ -110,15 +110,7 @@
 									$('#spinner').removeClass ('fa-spin');
 							}
 						);
-/*
-						$.get("http://arteach.tk/api/v1.0/text/map/", { text: 'Alex is clever.' },
-							function( data ) {
-								console.log('in');
-								window.tree = JSON.parse (data);
-								alert('ready');
-							}, "jsonp");
-*/
-						//window.tree = JSON.parse (httpGet ("http://arteach.tk/api/v1.0/text/map/", { text: 'Alex is clever.' }));
+						
 						function dfs (node) {
 							console.log (node);
 							if (Array.isArray (node))
@@ -172,7 +164,7 @@
 							var request = $.ajax({
 								async: false,
 								method: 'GET',
-								url: "http://arteach.tk/api/v1.0/text/map/", 
+								url: "/api/v1.0/text/map/", 
 								data: { text: $('#text').val() }
 							});
 
