@@ -34,9 +34,9 @@ class WordNet:
 				pattern_action = pattern.all_actions()[0]['action']
 				pattern_to = pattern.all_actions()[0]['obj']
 
-				percentage = 0
-				percentage += WordNet.Questions.Match.Properties(node.all_properties(), pattern_from.all_properties()) 
-				percentage += sum(
+				percentage = 1
+				percentage *= WordNet.Questions.Match.Properties(node.all_properties(), pattern_from.all_properties()) 
+				percentage *= sum(
 						[
 							float(
 								(
@@ -131,6 +131,8 @@ class WordNet:
 						else: 
 							#print ("extend " + str(part))
 							node.nodes[-1] = WordNet.Questions.Analyze.NP (part, node.nodes[-1])
+					elif part.label () == 'VP':
+						node.nodes[-1].extendAction(WordNet.Questions.Analyze.VP (part))
 					else:
 						for prop in part.leaves ():
 							#print ("Property: " + prop)

@@ -124,6 +124,9 @@ class WordNet:
 					else: 
 						#print ("extend " + str(part))
 						node.nodes[-1] = WordNet.Analyze.NP (part, node.nodes[-1])
+				elif part.label () == 'VP':
+					(act, obj) = WordNet.Analyze.VP (part)
+					node.nodes[-1].extendAction(act, obj)
 				else:
 					for prop in part.leaves ():
 						#print ("Property: " + prop)

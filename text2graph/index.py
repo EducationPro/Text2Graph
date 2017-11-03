@@ -43,7 +43,11 @@ def responseAnswer():
 
 @app.route('/jquery-3.2.1.min.js')
 def sendAJAX():
-    return render_template('jquery-3.2.1.min.js')
+    return render_template('jquery-3.1.1.js')
+
+@app.route('/index.js')
+def sendINDEX():
+    return render_template('index.js')
 
 @app.route('/find.html')
 def sendFind():
@@ -54,4 +58,4 @@ def sendGraph():
     return render_template('graph.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.0.104', port=8001)
+    app.run(debug=True, host='localhost', port=8001)
